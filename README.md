@@ -4,10 +4,11 @@
 
 [![CI](https://github.com/SachuJames/cloudtrim/actions/workflows/ci.yml/badge.svg)](https://github.com/SachuJames/cloudtrim/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/SachuJames/cloudtrim)](https://github.com/SachuJames/cloudtrim/releases)
+[![PyPI](https://img.shields.io/pypi/v/cloudtrim-cli)](https://pypi.org/project/cloudtrim-cli/)
 ![Python](https://img.shields.io/badge/python-3.11%2B-3776AB)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-**[Release v0.2.0](https://github.com/SachuJames/cloudtrim/releases/tag/v0.2.0)** · **[Image on GHCR](https://github.com/SachuJames/cloudtrim/pkgs/container/cloudtrim)**
+**[Release v0.2.1](https://github.com/SachuJames/cloudtrim/releases/tag/v0.2.1)** · **[PyPI](https://pypi.org/project/cloudtrim-cli/)** · **[Image on GHCR](https://github.com/SachuJames/cloudtrim/pkgs/container/cloudtrim)**
 
 Your cluster knows what each pod requested. It also knows what each pod
 actually used. cloudtrim puts the two side by side, suggests request
