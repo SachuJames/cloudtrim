@@ -19,7 +19,7 @@ difference costs you every month.
 ## Quickstart
 
 ```
-pipx install git+https://github.com/SachuJames/cloudtrim.git
+pipx install cloudtrim-cli
 cloudtrim --from-file examples/sample-snapshot.json
 ```
 
@@ -306,17 +306,16 @@ No runtime dependencies, standard library only.
 
 ## Install
 
-PyPI is coming under the name `cloudtrim-cli` (the plain name belongs to
-someone else's package). Until then:
+On PyPI as `cloudtrim-cli` (the plain name belongs to someone else's
+package):
 
 ```
-pipx install git+https://github.com/SachuJames/cloudtrim.git
+pipx install cloudtrim-cli
 ```
 
-or download the wheel from the
-[v0.2.0 release](https://github.com/SachuJames/cloudtrim/releases/tag/v0.2.0)
-and `pip install cloudtrim_cli-0.2.0-py3-none-any.whl`. A container image
-is on GHCR as `ghcr.io/sachujames/cloudtrim:v0.2.0`.
+or `pip install cloudtrim-cli`. The wheel is also attached to the
+[v0.2.1 release](https://github.com/SachuJames/cloudtrim/releases/tag/v0.2.1),
+and a container image is on GHCR as `ghcr.io/sachujames/cloudtrim:v0.2.1`.
 
 ## License
 
