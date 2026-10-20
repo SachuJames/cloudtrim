@@ -117,6 +117,8 @@ class ContainerReport:
     labels: dict
     windows: list
     primary: int  # index into windows of the window that decided the verdict
+    cpu_limit_m: float | None = None  # as requested in the snapshot
+    mem_limit_mi: float | None = None
     bursty: bool = False
     waste_cost_monthly: float = 0.0
     growth_cost_monthly: float = 0.0  # extra cost if tight suggestions are applied
@@ -266,6 +268,8 @@ def analyze(snapshot, pricing, config=None):
             labels=dict(c.labels),
             windows=windows,
             primary=primary,
+            cpu_limit_m=c.cpu_limit_m,
+            mem_limit_mi=c.mem_limit_mi,
             bursty=_is_bursty(windows, primary),
         )
         report.containers.append(entry)
