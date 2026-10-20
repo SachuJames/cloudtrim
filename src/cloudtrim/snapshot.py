@@ -1,9 +1,15 @@
 """Load and validate a usage snapshot.
 
 A snapshot is one JSON file: the cluster name, when it was captured, and a
-list of containers with what they requested and a list of usage samples.
-cloudtrim ships two ways to build one (a file you already have, or a live
-kubectl read) but everything downstream only ever sees this shape.
+list of containers with what they requested and their usage samples.
+cloudtrim ships three ways to build one (a file you already have, a live
+kubectl read, a Prometheus history) but everything downstream only ever
+sees this shape.
+
+A container's usage can arrive as several labeled windows ("24h", "7d",
+...). File and kubectl snapshots carry a single flat sample list, which
+the rest of the code reads as one window labeled "snapshot" (or by its
+time span, when the samples carry timestamps).
 """
 
 import json
@@ -18,6 +24,14 @@ class SnapshotError(ValueError):
 class Sample:
     cpu_m: float
     mem_mi: float
+    t: float | None = None  # epoch seconds, when the source provides it
+
+
+@dataclass
+class UsageWindow:
+    label: str
+    samples: list = field(default_factory=list)
+    span_seconds: float | None = None  # time the samples cover, when known
 
 
 @dataclass
@@ -30,6 +44,18 @@ class Container:
     cpu_limit_m: float | None = None
     mem_limit_mi: float | None = None
     samples: list = field(default_factory=list)
+    labels: dict = field(default_factory=dict)
+    windows: list = field(default_factory=list)
+
+    def usage_windows(self):
+        """All usage windows for this container, oldest data first."""
+        if self.windows:
+            return self.windows
+        span = None
+        stamps = [s.t for s in self.samples if s.t is not None]
+        if len(stamps) >= 2:
+            span = max(stamps) - min(stamps)
+        return [UsageWindow("snapshot", list(self.samples), span)]
 
 
 @dataclass
@@ -37,6 +63,7 @@ class Snapshot:
     cluster: str
     captured_at: str
     containers: list = field(default_factory=list)
+    source: str = "file"
 
 
 def _num(entry, key, where, required=True):
@@ -70,8 +97,14 @@ def _parse_container(entry, index):
             Sample(
                 cpu_m=_num(raw, "cpu_m", swhere),
                 mem_mi=_num(raw, "mem_mi", swhere),
+                t=_num(raw, "t", swhere, required=False),
             )
         )
+    labels = entry.get("labels", {})
+    if not isinstance(labels, dict) or not all(
+        isinstance(k, str) and isinstance(v, str) for k, v in labels.items()
+    ):
+        raise SnapshotError(f"{where}: 'labels' must be an object of strings")
     return Container(
         namespace=entry["namespace"],
         pod=entry["pod"],
@@ -81,6 +114,7 @@ def _parse_container(entry, index):
         cpu_limit_m=_num(entry, "cpu_limit_m", where, required=False),
         mem_limit_mi=_num(entry, "mem_limit_mi", where, required=False),
         samples=samples,
+        labels=dict(labels),
     )
 
 
@@ -103,6 +137,21 @@ def loads(text):
 def load(path):
     with open(path, encoding="utf-8") as fh:
         return loads(fh.read())
+
+
+def apply_filters(containers, namespaces=None, selectors=None):
+    """Keep only containers matching every filter the caller asked for.
+
+    namespaces is a list of names; selectors a list of (key, value) pairs
+    matched against each container's labels. No filters, no change.
+    """
+    out = list(containers)
+    if namespaces:
+        keep = set(namespaces)
+        out = [c for c in out if c.namespace in keep]
+    for key, value in selectors or []:
+        out = [c for c in out if c.labels.get(key) == value]
+    return out
 
 
 def from_cluster():
@@ -146,6 +195,10 @@ def from_cluster():
     for item in pods.get("items", []):
         meta = item.get("metadata", {})
         namespace, pod = meta.get("namespace", ""), meta.get("name", "")
+        pod_labels = {
+            str(k): str(v)
+            for k, v in (meta.get("labels") or {}).items()
+        }
         for spec in item.get("spec", {}).get("containers", []):
             name = spec.get("name", "")
             res = spec.get("resources", {})
@@ -167,12 +220,14 @@ def from_cluster():
                     cpu_limit_m=_parse_cpu(limits["cpu"]) if "cpu" in limits else None,
                     mem_limit_mi=_parse_mem(limits["memory"]) if "memory" in limits else None,
                     samples=samples,
+                    labels=pod_labels,
                 )
             )
     return Snapshot(
         cluster="live (kubectl)",
         captured_at=datetime.now(timezone.utc).isoformat(timespec="seconds"),
         containers=containers,
+        source="kubectl",
     )
 
 
