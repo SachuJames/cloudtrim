@@ -205,11 +205,9 @@ class _FakeResponse:
 
 
 def test_prometheus_mode_through_cli(monkeypatch, capsys):
-    import urllib.parse
     import urllib.request
-    from pathlib import Path
 
-    from tests.test_prometheus import fake_transport
+    from promfake import fake_transport
 
     def fake_urlopen(request, timeout=None):
         return _FakeResponse(fake_transport(request.full_url))

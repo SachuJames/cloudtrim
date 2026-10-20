@@ -1,42 +1,12 @@
-import json
-import urllib.parse
-from pathlib import Path
-
 import pytest
 
 from cloudtrim import prometheus
 from cloudtrim.analyze import analyze
 from cloudtrim.pricing import make_pricing
 from cloudtrim.snapshot import SnapshotError
+from promfake import empty_requests_transport, fake_transport
 
-FIXTURES = Path(__file__).parent / "fixtures"
 NOW = 1791859200.0
-
-
-def _load(name):
-    return json.loads((FIXTURES / name).read_text())
-
-
-def fake_transport(url):
-    """Route by endpoint, query text, and step, like a tiny recorded server."""
-    parts = urllib.parse.urlparse(url)
-    params = urllib.parse.parse_qs(parts.query)
-    query = params["query"][0]
-    if parts.path.endswith("/api/v1/query"):
-        if 'resource="cpu"' in query:
-            return _load("prom_requests_cpu.json")
-        return _load("prom_requests_mem.json")
-    step = params["step"][0]
-    if "container_cpu_usage_seconds_total" in query:
-        return _load("prom_cpu_24h.json" if step == "300" else "prom_cpu_7d.json")
-    return _load("prom_mem_24h.json" if step == "300" else "prom_mem_7d.json")
-
-
-def empty_requests_transport(url):
-    parts = urllib.parse.urlparse(url)
-    if parts.path.endswith("/api/v1/query"):
-        return _load("prom_requests_empty.json")
-    return fake_transport(url)
 
 
 @pytest.fixture
