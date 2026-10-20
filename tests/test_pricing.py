@@ -27,3 +27,22 @@ def test_pricing_file_override(tmp_path):
     assert p.vcpu_hour == 0.10
     assert p.gib_hour == 0.02
     assert p.as_of == "2026-01"
+
+
+def test_new_regions_exist():
+    for region in ("us-west-2", "eu-west-1"):
+        p = make_pricing(region)
+        assert p.region == region
+        assert p.vcpu_hour > 0 and p.gib_hour > 0
+
+
+def test_discount_scales_prices():
+    full = make_pricing("us-east-1")
+    cut = make_pricing("us-east-1", discount=0.6)
+    assert cut.discount == 0.6
+    assert cut.monthly(1000, 1024) == pytest.approx(full.monthly(1000, 1024) * 0.6)
+
+
+def test_negative_discount_rejected():
+    with pytest.raises(ValueError):
+        make_pricing("us-east-1", discount=-1)

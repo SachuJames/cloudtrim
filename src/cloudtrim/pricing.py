@@ -24,6 +24,8 @@ class Rates:
 # General-purpose on-demand Linux list price, mid-2026, per vCPU and GiB.
 BUILTINS = {
     "us-east-1": Rates("us-east-1", AS_OF, 0.0512, 0.0128),
+    "us-west-2": Rates("us-west-2", AS_OF, 0.0512, 0.0128),
+    "eu-west-1": Rates("eu-west-1", AS_OF, 0.0544, 0.0136),
     "ap-south-1": Rates("ap-south-1", AS_OF, 0.0560, 0.0140),
 }
 
@@ -50,15 +52,20 @@ class Pricing:
     as_of: str
     vcpu_hour: float
     gib_hour: float
+    discount: float = 1.0  # 0.6 reads as "we pay 60 percent of list"
 
     def hourly(self, cpu_m, mem_mi):
-        return cpu_m / 1000 * self.vcpu_hour + mem_mi / 1024 * self.gib_hour
+        list_price = cpu_m / 1000 * self.vcpu_hour + mem_mi / 1024 * self.gib_hour
+        return list_price * self.discount
 
     def monthly(self, cpu_m, mem_mi):
         return self.hourly(cpu_m, mem_mi) * HOURS_PER_MONTH
 
 
-def make_pricing(region, path=None):
+def make_pricing(region, path=None, discount=1.0):
+    if discount < 0:
+        raise ValueError("discount must be 0 or more")
     rates = load(region, path)
     return Pricing(region=rates.region, as_of=rates.as_of,
-                   vcpu_hour=rates.vcpu_hour, gib_hour=rates.gib_hour)
+                   vcpu_hour=rates.vcpu_hour, gib_hour=rates.gib_hour,
+                   discount=discount)
