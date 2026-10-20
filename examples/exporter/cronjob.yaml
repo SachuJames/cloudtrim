@@ -1,0 +1,80 @@
+# Hourly snapshot exporter: RBAC, the script as a ConfigMap, a volume to
+# keep the snapshots in, and the CronJob itself.
+# The image just needs sh, kubectl, and jq; swap in your own if you pin
+# images by digest.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cloudtrim-exporter
+  namespace: platform
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cloudtrim-exporter
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list"]
+  - apiGroups: ["metrics.k8s.io"]
+    resources: ["pods"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cloudtrim-exporter
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cloudtrim-exporter
+subjects:
+  - kind: ServiceAccount
+    name: cloudtrim-exporter
+    namespace: platform
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cloudtrim-snapshots
+  namespace: platform
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cloudtrim-exporter
+  namespace: platform
+spec:
+  schedule: "17 * * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        spec:
+          serviceAccountName: cloudtrim-exporter
+          restartPolicy: OnFailure
+          containers:
+            - name: exporter
+              image: dtzar/helm-kubectl:latest
+              command: ["/bin/sh", "/scripts/snapshot.sh", "/data/snapshot.json"]
+              env:
+                - name: CT_CLUSTER
+                  value: prod
+              volumeMounts:
+                - name: script
+                  mountPath: /scripts
+                - name: data
+                  mountPath: /data
+          volumes:
+            - name: script
+              configMap:
+                name: cloudtrim-exporter
+                defaultMode: 0755
+            - name: data
+              persistentVolumeClaim:
+                claimName: cloudtrim-snapshots

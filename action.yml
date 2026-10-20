@@ -1,0 +1,29 @@
+name: cloudtrim
+description: >-
+  Fail CI when Kubernetes requests waste too much, judged from a
+  checked-in usage snapshot
+author: Sachu James
+branding:
+  icon: scissors
+  color: blue
+inputs:
+  snapshot:
+    description: Path to a snapshot JSON file, relative to the workspace
+    required: true
+  fail-on-waste-pct:
+    description: Fail when waste exceeds this percent of requested cost
+    required: false
+    default: "25"
+  args:
+    description: Extra cloudtrim arguments, space separated
+    required: false
+    default: ""
+runs:
+  using: docker
+  image: docker://ghcr.io/sachujames/cloudtrim:v0.2.0
+  entrypoint: /bin/sh
+  args:
+    - -c
+    - >-
+      cloudtrim --from-file "/github/workspace/${{ inputs.snapshot }}"
+      --fail-on-waste-pct "${{ inputs.fail-on-waste-pct }}" ${{ inputs.args }}
