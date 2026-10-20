@@ -194,10 +194,14 @@ class ClusterReport:
 
 
 def _pick_primary(windows):
-    """The window covering the most time decides. Ties go to the later one."""
-    best = 0
-    for i, w in enumerate(windows):
-        if (w.span_seconds or 0) >= (windows[best].span_seconds or 0):
+    """The window covering the most time decides, among windows that have
+    data. A window can come back empty for a container that has samples in
+    another one, so an empty long window never hides real usage."""
+    with_data = [i for i, w in enumerate(windows) if w.samples > 0]
+    pool = with_data or list(range(len(windows)))
+    best = pool[0]
+    for i in pool:
+        if (windows[i].span_seconds or 0) >= (windows[best].span_seconds or 0):
             best = i
     return best
 

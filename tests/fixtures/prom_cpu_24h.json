@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "matrix",
+    "result": [
+      {"metric": {"namespace": "shop", "pod": "api-x", "container": "api"},
+       "values": [[1791858600, "200"], [1791858900, "220"], [1791859200, "210"]]},
+      {"metric": {"namespace": "shop", "pod": "web-x", "container": "web"},
+       "values": [[1791858600, "400"], [1791858900, "420"], [1791859200, "410"]]},
+      {"metric": {"namespace": "platform", "pod": "job-x", "container": "job"},
+       "values": [[1791858600, "50"], [1791858900, "60"], [1791859200, "55"]]}
+    ]
+  }
+}

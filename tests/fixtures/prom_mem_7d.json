@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "matrix",
+    "result": [
+      {"metric": {"namespace": "shop", "pod": "api-x", "container": "api"},
+       "values": [[1791855600, "280"], [1791857400, "290"], [1791859200, "300"]]},
+      {"metric": {"namespace": "shop", "pod": "web-x", "container": "web"},
+       "values": [[1791855600, "110"], [1791857400, "115"], [1791859200, "120"]]}
+    ]
+  }
+}

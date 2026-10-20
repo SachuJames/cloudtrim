@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {"metric": {"namespace": "shop", "pod": "api-x", "container": "api", "app": "api"}, "value": [1791859200, "1"]},
+      {"metric": {"namespace": "shop", "pod": "web-x", "container": "web", "app": "web"}, "value": [1791859200, "0.5"]},
+      {"metric": {"namespace": "shop", "pod": "idle-x", "container": "idle", "app": "idle"}, "value": [1791859200, "0.25"]}
+    ]
+  }
+}
