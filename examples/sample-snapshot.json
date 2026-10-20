@@ -1,0 +1,618 @@
+{
+  "cluster": "prod-eks-1",
+  "captured_at": "2026-10-18T09:30:00Z",
+  "containers": [
+    {
+      "namespace": "shop",
+      "pod": "api-6d9f8c5b4-x2v1",
+      "container": "api",
+      "cpu_request_m": 1000,
+      "mem_request_mi": 1024,
+      "cpu_limit_m": 2000,
+      "mem_limit_mi": 2048,
+      "samples": [
+        {
+          "cpu_m": 184,
+          "mem_mi": 446
+        },
+        {
+          "cpu_m": 218,
+          "mem_mi": 446
+        },
+        {
+          "cpu_m": 207,
+          "mem_mi": 446
+        },
+        {
+          "cpu_m": 196,
+          "mem_mi": 446
+        },
+        {
+          "cpu_m": 184,
+          "mem_mi": 446
+        },
+        {
+          "cpu_m": 218,
+          "mem_mi": 446
+        },
+        {
+          "cpu_m": 207,
+          "mem_mi": 446
+        },
+        {
+          "cpu_m": 196,
+          "mem_mi": 446
+        },
+        {
+          "cpu_m": 184,
+          "mem_mi": 446
+        },
+        {
+          "cpu_m": 225,
+          "mem_mi": 495
+        }
+      ]
+    },
+    {
+      "namespace": "shop",
+      "pod": "web-7f4b9d6c8-p9q3",
+      "container": "web",
+      "cpu_request_m": 500,
+      "mem_request_mi": 512,
+      "cpu_limit_m": 1000,
+      "mem_limit_mi": 1024,
+      "samples": [
+        {
+          "cpu_m": 266,
+          "mem_mi": 360
+        },
+        {
+          "cpu_m": 315,
+          "mem_mi": 360
+        },
+        {
+          "cpu_m": 299,
+          "mem_mi": 360
+        },
+        {
+          "cpu_m": 283,
+          "mem_mi": 360
+        },
+        {
+          "cpu_m": 266,
+          "mem_mi": 360
+        },
+        {
+          "cpu_m": 315,
+          "mem_mi": 360
+        },
+        {
+          "cpu_m": 299,
+          "mem_mi": 360
+        },
+        {
+          "cpu_m": 283,
+          "mem_mi": 360
+        },
+        {
+          "cpu_m": 266,
+          "mem_mi": 360
+        },
+        {
+          "cpu_m": 325,
+          "mem_mi": 400
+        }
+      ]
+    },
+    {
+      "namespace": "shop",
+      "pod": "checkout-5c8a7e2d1-m4k8",
+      "container": "checkout",
+      "cpu_request_m": 2000,
+      "mem_request_mi": 2048,
+      "cpu_limit_m": 4000,
+      "mem_limit_mi": 4096,
+      "samples": [
+        {
+          "cpu_m": 312,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 369,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 350,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 331,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 312,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 369,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 350,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 331,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 312,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 380,
+          "mem_mi": 600
+        }
+      ]
+    },
+    {
+      "namespace": "shop",
+      "pod": "auth-6b3d5f9a7-z8w2",
+      "container": "auth",
+      "cpu_request_m": 250,
+      "mem_request_mi": 256,
+      "cpu_limit_m": 500,
+      "mem_limit_mi": 512,
+      "samples": [
+        {
+          "cpu_m": 187,
+          "mem_mi": 162
+        },
+        {
+          "cpu_m": 221,
+          "mem_mi": 162
+        },
+        {
+          "cpu_m": 210,
+          "mem_mi": 162
+        },
+        {
+          "cpu_m": 198,
+          "mem_mi": 162
+        },
+        {
+          "cpu_m": 187,
+          "mem_mi": 162
+        },
+        {
+          "cpu_m": 221,
+          "mem_mi": 162
+        },
+        {
+          "cpu_m": 210,
+          "mem_mi": 162
+        },
+        {
+          "cpu_m": 198,
+          "mem_mi": 162
+        },
+        {
+          "cpu_m": 187,
+          "mem_mi": 162
+        },
+        {
+          "cpu_m": 228,
+          "mem_mi": 180
+        }
+      ]
+    },
+    {
+      "namespace": "shop",
+      "pod": "token-4a9c2e8b6-t5n7",
+      "container": "token",
+      "cpu_request_m": 100,
+      "mem_request_mi": 128,
+      "cpu_limit_m": 250,
+      "mem_limit_mi": 256,
+      "samples": [
+        {
+          "cpu_m": 33,
+          "mem_mi": 50
+        },
+        {
+          "cpu_m": 39,
+          "mem_mi": 50
+        },
+        {
+          "cpu_m": 37,
+          "mem_mi": 50
+        },
+        {
+          "cpu_m": 35,
+          "mem_mi": 50
+        },
+        {
+          "cpu_m": 33,
+          "mem_mi": 50
+        },
+        {
+          "cpu_m": 39,
+          "mem_mi": 50
+        },
+        {
+          "cpu_m": 37,
+          "mem_mi": 50
+        },
+        {
+          "cpu_m": 35,
+          "mem_mi": 50
+        },
+        {
+          "cpu_m": 33,
+          "mem_mi": 50
+        },
+        {
+          "cpu_m": 40,
+          "mem_mi": 55
+        }
+      ]
+    },
+    {
+      "namespace": "platform",
+      "pod": "worker-8d2f6a4c9-h3j5",
+      "container": "worker",
+      "cpu_request_m": 4000,
+      "mem_request_mi": 8192,
+      "cpu_limit_m": 8000,
+      "mem_limit_mi": 16384,
+      "samples": [
+        {
+          "cpu_m": 574,
+          "mem_mi": 1890
+        },
+        {
+          "cpu_m": 679,
+          "mem_mi": 1890
+        },
+        {
+          "cpu_m": 644,
+          "mem_mi": 1890
+        },
+        {
+          "cpu_m": 609,
+          "mem_mi": 1890
+        },
+        {
+          "cpu_m": 574,
+          "mem_mi": 1890
+        },
+        {
+          "cpu_m": 679,
+          "mem_mi": 1890
+        },
+        {
+          "cpu_m": 644,
+          "mem_mi": 1890
+        },
+        {
+          "cpu_m": 609,
+          "mem_mi": 1890
+        },
+        {
+          "cpu_m": 574,
+          "mem_mi": 1890
+        },
+        {
+          "cpu_m": 700,
+          "mem_mi": 2100
+        }
+      ]
+    },
+    {
+      "namespace": "platform",
+      "pod": "report-3e7b1d5f8-s6r4",
+      "container": "report",
+      "cpu_request_m": 500,
+      "mem_request_mi": 1024,
+      "cpu_limit_m": 1000,
+      "mem_limit_mi": 2048,
+      "samples": [
+        {
+          "cpu_m": 74,
+          "mem_mi": 270
+        },
+        {
+          "cpu_m": 87,
+          "mem_mi": 270
+        },
+        {
+          "cpu_m": 83,
+          "mem_mi": 270
+        },
+        {
+          "cpu_m": 78,
+          "mem_mi": 270
+        },
+        {
+          "cpu_m": 74,
+          "mem_mi": 270
+        },
+        {
+          "cpu_m": 87,
+          "mem_mi": 270
+        },
+        {
+          "cpu_m": 83,
+          "mem_mi": 270
+        },
+        {
+          "cpu_m": 78,
+          "mem_mi": 270
+        },
+        {
+          "cpu_m": 74,
+          "mem_mi": 270
+        },
+        {
+          "cpu_m": 90,
+          "mem_mi": 300
+        }
+      ]
+    },
+    {
+      "namespace": "platform",
+      "pod": "scheduler-9c5a3b7e2-v1x9",
+      "container": "scheduler",
+      "cpu_request_m": 100,
+      "mem_request_mi": 128,
+      "cpu_limit_m": 200,
+      "mem_limit_mi": 256,
+      "samples": [
+        {
+          "cpu_m": 72,
+          "mem_mi": 63
+        },
+        {
+          "cpu_m": 85,
+          "mem_mi": 63
+        },
+        {
+          "cpu_m": 81,
+          "mem_mi": 63
+        },
+        {
+          "cpu_m": 77,
+          "mem_mi": 63
+        },
+        {
+          "cpu_m": 72,
+          "mem_mi": 63
+        },
+        {
+          "cpu_m": 85,
+          "mem_mi": 63
+        },
+        {
+          "cpu_m": 81,
+          "mem_mi": 63
+        },
+        {
+          "cpu_m": 77,
+          "mem_mi": 63
+        },
+        {
+          "cpu_m": 72,
+          "mem_mi": 63
+        },
+        {
+          "cpu_m": 88,
+          "mem_mi": 70
+        }
+      ]
+    },
+    {
+      "namespace": "batch",
+      "pod": "etl-2f8d4c6a1-b7m3",
+      "container": "etl",
+      "cpu_request_m": 1500,
+      "mem_request_mi": 3072,
+      "cpu_limit_m": 3000,
+      "mem_limit_mi": 6144,
+      "samples": [
+        {
+          "cpu_m": 1025,
+          "mem_mi": 1710
+        },
+        {
+          "cpu_m": 1212,
+          "mem_mi": 1710
+        },
+        {
+          "cpu_m": 1150,
+          "mem_mi": 1710
+        },
+        {
+          "cpu_m": 1088,
+          "mem_mi": 1710
+        },
+        {
+          "cpu_m": 1025,
+          "mem_mi": 1710
+        },
+        {
+          "cpu_m": 1212,
+          "mem_mi": 1710
+        },
+        {
+          "cpu_m": 1150,
+          "mem_mi": 1710
+        },
+        {
+          "cpu_m": 1088,
+          "mem_mi": 1710
+        },
+        {
+          "cpu_m": 1025,
+          "mem_mi": 1710
+        },
+        {
+          "cpu_m": 1250,
+          "mem_mi": 1900
+        }
+      ]
+    },
+    {
+      "namespace": "batch",
+      "pod": "cache-5b1e9d3f7-k2p6",
+      "container": "redis",
+      "cpu_request_m": 200,
+      "mem_request_mi": 512,
+      "cpu_limit_m": 500,
+      "mem_limit_mi": 1024,
+      "samples": [
+        {
+          "cpu_m": 123,
+          "mem_mi": 423
+        },
+        {
+          "cpu_m": 146,
+          "mem_mi": 423
+        },
+        {
+          "cpu_m": 138,
+          "mem_mi": 423
+        },
+        {
+          "cpu_m": 130,
+          "mem_mi": 423
+        },
+        {
+          "cpu_m": 123,
+          "mem_mi": 423
+        },
+        {
+          "cpu_m": 146,
+          "mem_mi": 423
+        },
+        {
+          "cpu_m": 138,
+          "mem_mi": 423
+        },
+        {
+          "cpu_m": 130,
+          "mem_mi": 423
+        },
+        {
+          "cpu_m": 123,
+          "mem_mi": 423
+        },
+        {
+          "cpu_m": 150,
+          "mem_mi": 470
+        }
+      ]
+    },
+    {
+      "namespace": "batch",
+      "pod": "exporter-7a4c8e2b5-n8q1",
+      "container": "exporter",
+      "cpu_request_m": 50,
+      "mem_request_mi": 64,
+      "cpu_limit_m": 100,
+      "mem_limit_mi": 128,
+      "samples": [
+        {
+          "cpu_m": 10,
+          "mem_mi": 18
+        },
+        {
+          "cpu_m": 12,
+          "mem_mi": 18
+        },
+        {
+          "cpu_m": 11,
+          "mem_mi": 18
+        },
+        {
+          "cpu_m": 10,
+          "mem_mi": 18
+        },
+        {
+          "cpu_m": 10,
+          "mem_mi": 18
+        },
+        {
+          "cpu_m": 12,
+          "mem_mi": 18
+        },
+        {
+          "cpu_m": 11,
+          "mem_mi": 18
+        },
+        {
+          "cpu_m": 10,
+          "mem_mi": 18
+        },
+        {
+          "cpu_m": 10,
+          "mem_mi": 18
+        },
+        {
+          "cpu_m": 12,
+          "mem_mi": 20
+        }
+      ]
+    },
+    {
+      "namespace": "batch",
+      "pod": "ingest-1d6f3a9c4-w4t8",
+      "container": "ingest",
+      "cpu_request_m": 800,
+      "mem_request_mi": 1024,
+      "cpu_limit_m": 1600,
+      "mem_limit_mi": 2048,
+      "samples": [
+        {
+          "cpu_m": 574,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 679,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 644,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 609,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 574,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 679,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 644,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 609,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 574,
+          "mem_mi": 540
+        },
+        {
+          "cpu_m": 700,
+          "mem_mi": 600
+        }
+      ]
+    }
+  ]
+}
