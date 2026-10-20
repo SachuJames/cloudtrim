@@ -6,4 +6,4 @@ price on the difference. Reads and reports only, it never changes a
 cluster.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

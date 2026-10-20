@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cloudtrim-cli"
-version = "0.1.0"
+version = "0.2.0"
 description = "Find wasted Kubernetes resources: compares pod requests against measured usage, recommends right-sized values, and estimates what the waste costs"
 readme = "README.md"
 license = "MIT"

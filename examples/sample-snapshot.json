@@ -51,7 +51,10 @@
           "cpu_m": 225,
           "mem_mi": 495
         }
-      ]
+      ],
+      "labels": {
+        "app": "api"
+      }
     },
     {
       "namespace": "shop",
@@ -102,7 +105,10 @@
           "cpu_m": 325,
           "mem_mi": 400
         }
-      ]
+      ],
+      "labels": {
+        "app": "web"
+      }
     },
     {
       "namespace": "shop",
@@ -153,7 +159,10 @@
           "cpu_m": 380,
           "mem_mi": 600
         }
-      ]
+      ],
+      "labels": {
+        "app": "checkout"
+      }
     },
     {
       "namespace": "shop",
@@ -204,7 +213,10 @@
           "cpu_m": 228,
           "mem_mi": 180
         }
-      ]
+      ],
+      "labels": {
+        "app": "auth"
+      }
     },
     {
       "namespace": "shop",
@@ -255,7 +267,10 @@
           "cpu_m": 40,
           "mem_mi": 55
         }
-      ]
+      ],
+      "labels": {
+        "app": "token"
+      }
     },
     {
       "namespace": "platform",
@@ -306,7 +321,10 @@
           "cpu_m": 700,
           "mem_mi": 2100
         }
-      ]
+      ],
+      "labels": {
+        "app": "worker"
+      }
     },
     {
       "namespace": "platform",
@@ -357,7 +375,10 @@
           "cpu_m": 90,
           "mem_mi": 300
         }
-      ]
+      ],
+      "labels": {
+        "app": "report"
+      }
     },
     {
       "namespace": "platform",
@@ -408,7 +429,10 @@
           "cpu_m": 88,
           "mem_mi": 70
         }
-      ]
+      ],
+      "labels": {
+        "app": "scheduler"
+      }
     },
     {
       "namespace": "batch",
@@ -459,7 +483,10 @@
           "cpu_m": 1250,
           "mem_mi": 1900
         }
-      ]
+      ],
+      "labels": {
+        "app": "etl"
+      }
     },
     {
       "namespace": "batch",
@@ -510,7 +537,10 @@
           "cpu_m": 150,
           "mem_mi": 470
         }
-      ]
+      ],
+      "labels": {
+        "app": "cache"
+      }
     },
     {
       "namespace": "batch",
@@ -561,7 +591,10 @@
           "cpu_m": 12,
           "mem_mi": 20
         }
-      ]
+      ],
+      "labels": {
+        "app": "exporter"
+      }
     },
     {
       "namespace": "batch",
@@ -612,7 +645,10 @@
           "cpu_m": 700,
           "mem_mi": 600
         }
-      ]
+      ],
+      "labels": {
+        "app": "ingest"
+      }
     }
   ]
 }
