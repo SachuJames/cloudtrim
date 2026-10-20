@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d2137"/>
+      <stop offset="0.6" stop-color="#164a6e"/>
+      <stop offset="1" stop-color="#2b7cb8"/>
+    </linearGradient>
+    <linearGradient id="tag" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd479"/>
+      <stop offset="1" stop-color="#f0a832"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="300" fill="url(#sky)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="3">
+    <path d="M120,120 a52,52 0 0 1 12,-102 a66,66 0 0 1 122,14 a42,42 0 0 1 34,88 z"/>
+  </g>
+  <g>
+    <g transform="rotate(18 985 120)">
+      <path d="M900,60 h110 l70,70 v110 a14,14 0 0 1 -14,14 h-166 a14,14 0 0 1 -14,-14 v-166 a14,14 0 0 1 14,-14 z" fill="url(#tag)"/>
+      <circle cx="930" cy="92" r="13" fill="#0d2137"/>
+      <text x="935" y="185" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#0d2137">-$</text>
+    </g>
+    <path d="M886,40 L1040,190" stroke="#e8f4fd" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 12" opacity="0.7"/>
+  </g>
+  <text x="72" y="140" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="84" font-weight="700" fill="#ffffff" letter-spacing="1">cloudtrim</text>
+  <text x="76" y="192" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#cfe7fa">find the Kubernetes resources you are paying for and not using</text>
+  <text x="76" y="238" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="19" fill="#9cc8ee">requests vs real usage · right-sized suggestions · honest estimates</text>
+</svg>
