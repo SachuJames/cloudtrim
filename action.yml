@@ -20,7 +20,7 @@ inputs:
     default: ""
 runs:
   using: docker
-  image: docker://ghcr.io/sachujames/cloudtrim:v0.2.0
+  image: docker://ghcr.io/sachujames/cloudtrim:v0.2.1
   entrypoint: /bin/sh
   args:
     - -c
